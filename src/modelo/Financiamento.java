@@ -37,4 +37,9 @@ public class Financiamento {
     System.out.println("Valor do imóvel: " + getValorImovel());
 
   }
+
+  public String getPrazo() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getPrazo'");
+  }
 }

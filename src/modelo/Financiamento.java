@@ -32,7 +32,7 @@ public abstract class Financiamento {
       return calcularPagamentoMensal() * this.prazoFinanciamento * 12;
     } catch (DescontoMaiorDoQueJurosException e) {
       System.out.println("Erro ao calcular o financiamento: " + e.getMessage());
-      return 0; // Ou qualquer outro tratamento que você deseje fazer
+      return 0;
     }
   }
 

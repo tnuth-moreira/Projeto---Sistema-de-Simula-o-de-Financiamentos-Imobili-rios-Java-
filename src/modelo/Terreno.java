@@ -31,7 +31,6 @@ public class Terreno extends Financiamento {
   }
 
   @Override
-  public int getPrazo() { // Implementação do método abstrato getPrazo()
-    return super.getPrazoFinanciamento(); // Supondo que o prazo seja retornado do financiamento
-  }
+  public int getPrazo() { 
+    return super.getPrazoFinanciamento(); 
 }

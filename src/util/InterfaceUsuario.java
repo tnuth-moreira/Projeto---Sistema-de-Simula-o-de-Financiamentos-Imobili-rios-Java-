@@ -1,4 +1,4 @@
-package src.util;
+package util;
 
 import java.util.Scanner;
 
@@ -14,7 +14,7 @@ public class InterfaceUsuario {
   public double solicitarValorImovel() {
     double valorImovel;
     do {
-      System.out.println("Digite o valor do imovel: ");
+      System.out.println("Digite o valor do imóvel: ");
       valorImovel = scanner.nextDouble();
 
       if (valorImovel < 0) {
@@ -27,7 +27,7 @@ public class InterfaceUsuario {
   public int solicitarPrazoFinanciamento() {
     int prazoFinanciamento;
     do {
-      System.out.println("Digite o prazo do financimanto em anos: ");
+      System.out.println("Digite o prazo do financiamento em anos: ");
       prazoFinanciamento = scanner.nextInt();
 
       if (prazoFinanciamento <= 0 || prazoFinanciamento > PRAZO_FINANCIAMENTO_MAX) {
@@ -48,6 +48,36 @@ public class InterfaceUsuario {
       }
     } while (taxaJuros <= 0 || taxaJuros > TAXA_JUROS_MAX);
     return taxaJuros;
+  }
+
+  public String solicitarTipoImovel() {
+    System.out.println("Digite o tipo de imóvel (Casa, Apartamento ou Terreno): ");
+    return scanner.next();
+  }
+
+  public double solicitarAreaConstruida() {
+    System.out.println("Digite a área construída: ");
+    return scanner.nextDouble();
+  }
+
+  public double solicitarTamanhoTerreno() {
+    System.out.println("Digite o tamanho do terreno: ");
+    return scanner.nextDouble();
+  }
+
+  public int solicitarNumeroVagasGaragem() {
+    System.out.println("Digite o número de vagas na garagem: ");
+    return scanner.nextInt();
+  }
+
+  public int solicitarNumeroAndar() {
+    System.out.println("Digite o número do andar: ");
+    return scanner.nextInt();
+  }
+
+  public String solicitarTipoZona() {
+    System.out.println("Digite o tipo de zona (rural, urbana, industrial, etc.): ");
+    return scanner.next();
   }
 
   public void fecharScanner() {

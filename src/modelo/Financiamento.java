@@ -1,21 +1,22 @@
-package src.modelo;
+package modelo;
 
-public class Financiamento {
+import util.DescontoMaiorDoQueJurosException;
 
+public abstract class Financiamento {
   private double valorImovel;
   private int prazoFinanciamento;
   private double taxaJurosAnual;
 
   public double getValorImovel() {
-    return this.valorImovel;
+    return valorImovel;
   }
 
   public int getPrazoFinanciamento() {
-    return this.prazoFinanciamento;
+    return prazoFinanciamento;
   }
 
   public double getTaxaJurosAnual() {
-    return this.taxaJurosAnual;
+    return taxaJurosAnual;
   }
 
   public Financiamento(double valorDesejadoImovel, int prazoFinanciamentoAnos, double taxaJurosAnual) {
@@ -24,22 +25,21 @@ public class Financiamento {
     this.taxaJurosAnual = taxaJurosAnual;
   }
 
-  public double calcularPagamentoMensal() {
-    return (this.valorImovel / (this.prazoFinanciamento * 12)) * (1 + (this.taxaJurosAnual / 12));
-  }
+  public abstract double calcularPagamentoMensal() throws DescontoMaiorDoQueJurosException;
 
   public double calcularTotalPagamento() {
-    return calcularPagamentoMensal() * this.prazoFinanciamento * 12;
+    try {
+      return calcularPagamentoMensal() * this.prazoFinanciamento * 12;
+    } catch (DescontoMaiorDoQueJurosException e) {
+      System.out.println("Erro ao calcular o financiamento: " + e.getMessage());
+      return 0; // Ou qualquer outro tratamento que você deseje fazer
+    }
   }
 
   public void mostrarDadosFinanciamento() {
     System.out.println("Valor total do financiamento: " + calcularTotalPagamento());
     System.out.println("Valor do imóvel: " + getValorImovel());
-
   }
 
-  public String getPrazo() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getPrazo'");
-  }
+  public abstract int getPrazo();
 }
